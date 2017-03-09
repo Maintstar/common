@@ -3,9 +3,15 @@ const getProfileConfig = require('./getProfileConfig')
 
 const cacheByProfile = {}
 
-module.exports = function (app, profile, getDbByConfig) {
+function getProfileDatabase (app, profile, getDbByConfig) {
   const profileName = getProfileName(app, profile)
-  const config = getProfileConfig(profileName)
+  const config = getProfileConfig(app, profile)
+
+  // no database config
+  if (getDbByConfig == null) {
+    throw new Error(`please specify getDbByConfig 3rd parameter, which should return database intance by Config`)
+  }
+
 
   // cache by profile name
   let cached = cacheByProfile[profileName]
@@ -22,3 +28,8 @@ module.exports = function (app, profile, getDbByConfig) {
 
   return cached
 }
+
+// expose cache as well
+getProfileDatabase.cache = cacheByProfile
+
+module.exports = getProfileDatabase

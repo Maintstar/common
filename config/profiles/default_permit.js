@@ -1,3 +1,4 @@
 module.exports = {
-  defaultProfileAppParam: 1
+  defaultProfileAppParam: 1,
+  db: {}
 }
