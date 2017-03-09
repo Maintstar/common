@@ -1,6 +1,6 @@
-const getProfileConfig = require('./getProfileConfig')
-const getProfileDatabase = require('./getProfileDatabase')
-const getProfileName = require('./getProfileName')
+const getProfileConfig = require('./src/getProfileConfig')
+const getProfileDatabase = require('./src/getProfileDatabase')
+const getProfileName = require('./src/getProfileName')
 
 module.exports = {
   getProfileConfig,
